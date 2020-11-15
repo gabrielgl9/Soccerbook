@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Team extends Model
 {
+    use TeamRelationship;
+
     /**
      * Data base table
      *

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PlayerRequest extends FormRequest
+class TeamRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,6 +25,8 @@ class PlayerRequest extends FormRequest
     {
         return [
             'name' => 'required|string|min:3|max:100',
+            'players' => 'present|array',
+            'players.*.id' => 'required|numeric|exists:players,id',
         ];
     }
 }
