@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PlayerRequest;
+use App\Models\Player\PlayerResource;
 use App\Services\PlayerService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -51,7 +52,7 @@ class PlayerController extends Controller
         try {
             $player = $this->playerService->savePlayer($playerRequest);
             DB::commit();
-            return response()->json($player, $this->successResponse);
+            return response()->json(new PlayerResource($player), $this->successResponse);
         } catch (\Throwable $th) {
             DB::rollback();
             return response()->json($th->getMessage(), $this->failedResponse);

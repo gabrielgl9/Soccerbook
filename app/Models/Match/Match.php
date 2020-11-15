@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Match extends Model
 {
+    use MatchRelationship;
+
     /**
      * Data base table
      *
@@ -18,7 +20,7 @@ class Match extends Model
      */
     protected $fillable = [
         'schedule_start',
-        'time',
+        'duration',
         'place_id',
         'type_id'
     ];

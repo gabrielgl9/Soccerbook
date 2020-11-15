@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('v1')->group(function() {
     Route::resource('/player', 'PlayerController')->only(['index', 'store']);
     Route::resource('/team', 'TeamController')->only(['index', 'store']);
+    Route::resource('/match', 'MatchController')->only(['index', 'store']);
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
