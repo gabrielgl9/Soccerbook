@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PlayerRequest;
+use App\Models\Player\Player;
 use App\Models\Player\PlayerResource;
 use App\Services\PlayerService;
 use Illuminate\Http\Request;
@@ -37,6 +38,20 @@ class PlayerController extends Controller
         try {
             $players = $this->playerService->listPlayers();
             return response()->json($players, $this->successResponse);
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(), $this->failedResponse);
+        }
+    }
+
+    /**
+     * Show all statistics of a specific player
+     *
+     */
+    public function findStatistics(Player $player)
+    {
+        try {
+            $playerStatistics = $this->playerService->findStatistics($player);
+            return response()->json($playerStatistics, $this->successResponse);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), $this->failedResponse);
         }

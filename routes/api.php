@@ -18,6 +18,9 @@ Route::prefix('v1')->group(function() {
     Route::resource('/player', 'PlayerController')->only(['index', 'store']);
     Route::resource('/team', 'TeamController')->only(['index', 'store']);
     Route::resource('/match', 'MatchController')->only(['index', 'store']);
+    Route::get('/player-statistics/{player}', 'StatisticPlayerController@findStatistics');
+    Route::get('/player-statistics/{player}/{match}', 'StatisticPlayerController@findStatisticsByMatch');
+    Route::post('/player-statistics', 'StatisticPlayerController@saveStatistics');
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

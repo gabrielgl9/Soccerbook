@@ -10,7 +10,7 @@ trait MatchRelationship
      */
     public function players()
     {
-        return $this->belongsToMany(\App\Models\Player\Player::class, 'personal_statistics', 'match_id', 'player_id');
+        return $this->belongsToMany(\App\Models\Player\Player::class, 'personal_statistics', 'match_id', 'player_id')->withPivot(['goals']);
     }
 
     /**

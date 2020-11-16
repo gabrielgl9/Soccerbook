@@ -2,12 +2,11 @@
 
 namespace App\Models\Player;
 
-use App\Models\Team\TeamRelationship;
 use Illuminate\Database\Eloquent\Model;
 
 class Player extends Model
 {
-    use TeamRelationship;
+    use PlayerRelationship;
 
     /**
      * Data base table
